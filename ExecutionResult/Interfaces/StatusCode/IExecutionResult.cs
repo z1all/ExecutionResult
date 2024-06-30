@@ -7,7 +7,6 @@
     }
 
     public interface IExecutionResult<TSuccessResult, TStatusEnum> : Interfaces.IExecutionResult<TSuccessResult>, IExecutionResult<TStatusEnum>
-        where TSuccessResult : class
         where TStatusEnum : Enum
     {
     }

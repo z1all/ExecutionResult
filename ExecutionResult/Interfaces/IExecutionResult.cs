@@ -11,7 +11,6 @@ namespace ExecutionResult.Interfaces
     }
 
     public interface IExecutionResult<TSuccessResult> : IExecutionResult
-        where TSuccessResult : class
     {
         TSuccessResult Result { get; }
         bool TryGetResult ([NotNullWhen(true)] out TSuccessResult? result);

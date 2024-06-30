@@ -1,5 +1,8 @@
-﻿namespace ExecutionResult.StatusCode
+﻿using System.ComponentModel;
+
+namespace ExecutionResult.StatusCode
 {
+    [DefaultValue(Ok)]
     public enum StatusCodeExecutionResult
     {
         Ok = 200,
