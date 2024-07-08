@@ -1,10 +1,10 @@
 ﻿using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using ExecutionResult.Interfaces;
+using Z1all.ExecutionResult.Interfaces;
 
-namespace ExecutionResult.Base
+namespace Z1all.ExecutionResult.Base
 {
-    public class BaseExecutionResult : IExecutionResult
+    public abstract class BaseExecutionResult : IExecutionResult
     {
         private ImmutableDictionary<string, List<string>> _errors = ImmutableDictionary<string, List<string>>.Empty;
         public ImmutableDictionary<string, List<string>> Errors

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ExecutionResult.StatusCode
+namespace Z1all.ExecutionResult.StatusCode
 {
     [DefaultValue(Ok)]
     public enum StatusCodeExecutionResult

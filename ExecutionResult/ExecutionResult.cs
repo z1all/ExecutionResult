@@ -1,7 +1,8 @@
 ﻿using System.Collections.Immutable;
-using ExecutionResult.Base;
+using Z1all.ExecutionResult.Base;
+using Z1all.ExecutionResult.Errors;
 
-namespace ExecutionResult
+namespace Z1all.ExecutionResult
 {
     public class ExecutionResult : BaseExecutionResult
     {
@@ -13,6 +14,7 @@ namespace ExecutionResult
         public static ExecutionResult FromError<TSuccessResult>(ExecutionResult<TSuccessResult> errorResult) => new(errorResult.Errors);
         public static ExecutionResult FromError(string keyError, params string[] error) => new(keyError, error);
         public static ExecutionResult FromError(ImmutableDictionary<string, List<string>> errors) => new(errors);
+        public static ExecutionResult FromError(BaseError error) => new(error.KeyError, error.KeyError);
     }
 
     public class ExecutionResult<TSuccessResult> : BaseExecutionResult<TSuccessResult>
@@ -25,6 +27,7 @@ namespace ExecutionResult
         public static ExecutionResult<TSuccessResult> FromError(ExecutionResult errorResult) => new(errorResult.Errors);
         public static ExecutionResult<TSuccessResult> FromError(string keyError, params string[] error) => new(keyError, error);
         public static ExecutionResult<TSuccessResult> FromError(ImmutableDictionary<string, List<string>> errors) => new(errors);
+        public static ExecutionResult<TSuccessResult> FromError(BaseError error) => new(error.KeyError, error.KeyError);
 
         public static implicit operator ExecutionResult<TSuccessResult>(TSuccessResult value) => new(value);
     }

@@ -1,10 +1,10 @@
-﻿using ExecutionResult.Interfaces.StatusCode;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using Z1all.ExecutionResult.Interfaces.StatusCode;
 
-namespace ExecutionResult.StatusCode.Base
+namespace Z1all.ExecutionResult.StatusCode.Base
 {
-    public class BaseExecutionResult<TStatusEnum> : IExecutionResult<TStatusEnum>
+    public abstract class BaseExecutionResult<TStatusEnum> : IExecutionResult<TStatusEnum>
         where TStatusEnum : Enum
     {
         private ImmutableDictionary<string, List<string>> _errors = ImmutableDictionary<string, List<string>>.Empty;
@@ -30,11 +30,12 @@ namespace ExecutionResult.StatusCode.Base
         public bool IsNotSuccess { get => !_isSuccess; }
 
         public TStatusEnum StatusCode { get; protected set; }
+        public abstract TStatusEnum DefaultStatusCode { get; }
 
         public BaseExecutionResult()
         {
             IsSuccess = true;
-            StatusCode = default!;
+            StatusCode = DefaultStatusCode;
         }
         public BaseExecutionResult(TStatusEnum status, string keyError, params string[] error)
         {
@@ -50,7 +51,7 @@ namespace ExecutionResult.StatusCode.Base
         }
     }
 
-    public class BaseExecutionResult<TSuccessResult, TStatusEnum> : BaseExecutionResult<TStatusEnum>, IExecutionResult<TSuccessResult, TStatusEnum>
+    public abstract class BaseExecutionResult<TSuccessResult, TStatusEnum> : BaseExecutionResult<TStatusEnum>, IExecutionResult<TSuccessResult, TStatusEnum>
         where TStatusEnum : Enum
     {
         private TSuccessResult? _result;

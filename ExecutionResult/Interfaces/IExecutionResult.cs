@@ -1,7 +1,7 @@
 ﻿using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ExecutionResult.Interfaces
+namespace Z1all.ExecutionResult.Interfaces
 {
     public interface IExecutionResult
     {
@@ -13,6 +13,6 @@ namespace ExecutionResult.Interfaces
     public interface IExecutionResult<TSuccessResult> : IExecutionResult
     {
         TSuccessResult Result { get; }
-        bool TryGetResult ([NotNullWhen(true)] out TSuccessResult? result);
+        bool TryGetResult([NotNullWhen(true)] out TSuccessResult? result);
     }
 }
