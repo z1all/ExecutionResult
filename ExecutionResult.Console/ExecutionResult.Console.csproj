@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExecutionResult\ExecutionResult.csproj" />
+    <ProjectReference Include="..\ExecutionResult\Z1all.ExecutionResult.csproj" />
   </ItemGroup>
 
 </Project>
