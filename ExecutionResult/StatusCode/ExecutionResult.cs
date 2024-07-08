@@ -6,7 +6,7 @@ namespace Z1all.ExecutionResult.StatusCode
 {
     public class ExecutionResult : BaseExecutionResult<StatusCodeExecutionResult>
     {
-        public override StatusCodeExecutionResult DefaultStatusCode => StatusCodeExecutionResult.Ok;
+        public override StatusCodeExecutionResult DefaultStatusCode => StatusCodeExecutionResult.NoContent;
 
         protected ExecutionResult() { }
         protected ExecutionResult(StatusCodeExecutionResult status, ImmutableDictionary<string, List<string>> errors) : base(status, errors) { }
@@ -32,7 +32,7 @@ namespace Z1all.ExecutionResult.StatusCode
         protected ExecutionResult(StatusCodeExecutionResult status, ImmutableDictionary<string, List<string>> errors) : base(status, errors) { }
         protected ExecutionResult(StatusCodeExecutionResult status, string keyError, params string[] error) : base(status, keyError, error) { }
 
-        private static ExecutionResult<TSuccessResult> FromSuccess(TSuccessResult value) => new ExecutionResult<TSuccessResult>(value);
+        public static ExecutionResult<TSuccessResult> FromSuccess(TSuccessResult value) => new ExecutionResult<TSuccessResult>(value);
         public static ExecutionResult<TSuccessResult> FromError(ExecutionResult errorResult) => new ExecutionResult<TSuccessResult>(errorResult.StatusCode, errorResult.Errors);
         public static ExecutionResult<TSuccessResult> FromError(StatusCodeExecutionResult status, string keyError, params string[] error) => new(status, keyError, error);
         public static ExecutionResult<TSuccessResult> FromError(StatusCodeExecutionResult status, ImmutableDictionary<string, List<string>> errors) => new(status, errors);
